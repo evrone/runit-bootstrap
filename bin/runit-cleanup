@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo -n "Cleanup runit? (y/N) "
+read verify
+if [ "$verify" == "y" ]; then
+  # stop active services
+  rm -rf ~/service/*
+  sudo rm -rf /etc/service/runsvdir-*
+
+  rm -rf ~/service/ ~/sv/
+  sudo rm -rf /etc/sv/runsvdir-*
+
+  sudo apt-get purge runit
+fi
