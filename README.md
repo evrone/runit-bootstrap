@@ -1,14 +1,14 @@
 # runit-boostrap
 
-This script bootstraps runit for current user.
+This script bootstraps runit for current user. Works on Ubuntu 10.04 - 12.10.
 
-Usage:
+## Install and setup
 
 ```
 curl https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-bootstrap | bash
 ```
 
-Cleanup:
+## Uninstall
 
 ```
 curl https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-cleanup | bash
