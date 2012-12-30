@@ -5,11 +5,11 @@ This script bootstraps runit for current user. Works on Ubuntu 10.04 - 12.10.
 ## Install and setup
 
 ```
-curl https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-bootstrap | bash
+source <(curl -s https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-bootstrap)
 ```
 
 ## Uninstall
 
 ```
-curl https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-cleanup | bash
+source <(curl -s https://raw.github.com/evrone/runit-bootstrap/master/bin/runit-cleanup)
 ```

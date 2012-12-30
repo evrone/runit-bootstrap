@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt-get install runit
+sudo apt-get -y install runit
 
 runit_service_root="/etc/service"
 runit_sv_root="/etc/sv"
@@ -14,20 +14,21 @@ root_user_sv_dir=$runit_sv_root/runsvdir-$current_user
 root_user_service_dir=$runit_service_root/runsvdir-$current_user
 
 sudo mkdir -p "$root_user_sv_dir"
-sudo mkdir -p "$root_user_service_dir"
 
 user_sv_dir="$user_home/sv"
 user_service_dir="$user_home/service"
 
 mkdir -p "$user_sv_dir"
+mkdir -p "$user_service_dir"
 
 content="#!/bin/sh
 exec 2>&1
-exec chpst -udeploy runsvdir $user_home/service"
+exec chpst -udeploy runsvdir $user_home/service
+"
 
 sudo sh -c "echo \"$content\" > $root_user_sv_dir/run"
-
-echo "ln -s $root_user_sv_dir $RUNIT_SERVICE_ROOT"
+sudo sh -c "chmod +x $root_user_sv_dir/run"
+sudo sh -c "ln -s $root_user_sv_dir $root_user_service_dir"
 
 echo "*** runit-bootstrap done! ***"
 echo "User sv dir: $user_sv_dir"

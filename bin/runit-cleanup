@@ -3,6 +3,7 @@
 echo -n "Cleanup runit? (y/N) "
 read verify
 if [ "$verify" == "y" ]; then
+
   # stop active services
   rm -rf ~/service/*
   sudo rm -rf /etc/service/runsvdir-*
@@ -10,5 +11,12 @@ if [ "$verify" == "y" ]; then
   rm -rf ~/service/ ~/sv/
   sudo rm -rf /etc/sv/runsvdir-*
 
-  sudo apt-get purge runit
+  sudo apt-get -y purge runit
+
+  echo "*** runit-cleanup done! ***"
+
+else
+
+  echo "*** runit-cleanup canceled! ***"
+
 fi
